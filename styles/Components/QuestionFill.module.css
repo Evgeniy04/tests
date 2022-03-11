@@ -1,0 +1,79 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 20px;
+  margin-bottom: 20px;
+  background: #ebf4f8;
+  border-radius: 8px;
+  justify-content: flex-start;
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  align-items: center;
+  font-weight: bolder;
+  font-size: 16px;
+  font-weight: 400;
+  word-break: break-all;
+}
+
+.titleSvg {
+  overflow: auto;
+}
+
+.titleSvg::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+
+.titleSvg::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #c8cfd6;
+}
+
+.titleSvg::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+
+.points {
+  text-align: end;
+  color: #f9f9fd;
+  width: 20%;
+  word-break: break-word;
+}
+
+.titleMathsRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.answerContent {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  margin-bottom: 10px;
+  word-break: break-all;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.answerFirstChild {
+  padding-top: 10px;
+  border-top: #c8cfd6 solid 1px;
+}
+
+.editorContainer {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 20px;
+}

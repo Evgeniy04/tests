@@ -2,17 +2,30 @@
   "name": "tests",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 80",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 80",
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.3.1",
+    "@mui/material": "^5.4.0",
+    "@reduxjs/toolkit": "^1.7.2",
+    "html-react-parser": "^1.4.6",
+    "katex": "^0.15.2",
+    "mathjax-node": "^2.1.1",
+    "mongodb": "^4.3.1",
     "next": "12.0.10",
+    "next-connect": "^0.12.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-redux": "^7.2.6",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.2.1",
     "eslint": "8.8.0",
     "eslint-config-next": "12.0.10"
   }

@@ -1,0 +1,137 @@
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 20px 0 20px 0;
+  width: 640px;
+  min-height: 70px;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.headerResponsiveTrigger {
+  border-radius: 5px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 20px 0;
+  width: 640px;
+  height: 100%;
+  min-height: 10vh;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.title {
+  padding: 0 20px;
+  color: #2c2738;
+  font-size: 32px;
+  font-weight: 400;
+  word-break: break-word;
+}
+
+.description {
+  padding: 0 20px;
+  margin-top: 20;
+  color: #2c2738;
+  font-weight: 400;
+  font-size: 16px;
+  word-break: break-word;
+}
+
+.send_button {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 20px 20px 20px;
+}
+
+.box_modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: white;
+  border: 2px solid #000;
+  border-radius: 5px;
+  box-shadow: 24px;
+  padding: 16px 32px 24px 32px;
+}
+
+.sendIcon {
+  transform: rotate(-90deg);
+}
+
+.timer {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+.timer__items {
+  display: flex;
+  font-size: 48px;
+}
+.timer__item {
+  position: relative;
+  min-width: 60px;
+  margin: 0 10px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+.timer__item::before {
+  content: attr(data-title);
+  display: block;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  font-size: 14px;
+}
+.timer__item:not(:last-child)::after {
+  content: ":";
+  position: absolute;
+  right: -15px;
+}
+
+@media screen and (max-width: 840px) {
+  .timer__items {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .timer__item:nth-child(2) {
+    display: none;
+  }
+  .timer__item:nth-child(1)::after {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1160px) {
+  .timer__item:last-child {
+    display: none;
+  }
+  .timer__item:nth-child(2)::after {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .box_modal {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .header {
+    width: 90vw;
+    min-width: 360px;
+  }
+  .main {
+    width: 90vw;
+    min-width: 360px;
+  }
+}

@@ -1,34 +1,38 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
-
-First, run the development server:
+## Getting Started in Ubuntu
 
 ```bash
-npm run dev
-# or
-yarn dev
+# Install Node.js & npm
+# https://github.com/nvm-sh/nvm
+sudo apt update
+sudo apt install nodejs
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+nvm install stable
+node -v
+
+# Install and Start MongoDB
+# https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+sudo systemctl start mongod
+sudo systemctl status mongod
+sudo systemctl enable mongod
+
+# Change Directory to project
+
+# Install module
+npm i
+# https://www.npmjs.com/package/pm2
+npm install pm2 -g
+
+# Start project
+# - If necessary, change the paths to api (constants/api.js) and rebuild applications (next build)
+pm2 start npm --name "next" -- start
 ```
 
-Open [http://localhost:3000](http://localhost:80) with your browser to see the result.
-
-You can start editing the page by modifying `pages/`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:80/api/forms/](http://localhost:80/api/forms/). This endpoint can be edited in `pages/api/forms/`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Open [http://localhost:80](http://localhost:80) with your browser to see the result.

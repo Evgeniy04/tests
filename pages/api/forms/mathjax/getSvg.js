@@ -9,13 +9,13 @@ mjAPI.start();
 handler.use(middleware);
 
 handler.post(async (req, res) => {
-  const { titleMML } = req.body;
+  let { mml } = req.body;
 
   await mjAPI.typeset(
     {
       ex: 5.5,
       width: 0,
-      math: titleMML,
+      math: mml,
       format: "MathML",
       useGlobalCache: false,
       svg: true,

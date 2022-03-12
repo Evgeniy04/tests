@@ -24,6 +24,7 @@ const initialState = {
   updateAnswer: { update: false, qid: -1, aid: -1 },
   submission: false,
   _id: "",
+  editId: "",
 };
 
 export const fetchFormCreate = createAsyncThunk(
@@ -37,8 +38,27 @@ export const fetchFormCreate = createAsyncThunk(
       body: JSON.stringify(await thunkAPI.getState().createForm),
     });
     if (response.ok) {
-      const { _id } = await response.json();
-      return _id;
+      const result = await response.json();
+      return result;
+    } else {
+      return response;
+    }
+  }
+);
+
+export const fetchFormEdit = createAsyncThunk(
+  "form/requestfetchFormEdit",
+  async (data, thunkAPI) => {
+    let response = await fetch(`${url_api}forms/edit`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(await thunkAPI.getState().createForm),
+    });
+    if (response.ok) {
+      const result = await response.json();
+      return result;
     } else {
       return response;
     }
@@ -49,6 +69,9 @@ export const createFormSlice = createSlice({
   name: "createForm",
   initialState,
   reducers: {
+    editForm: (state, action) => {
+      state.form = action.payload;
+    },
     createQuestion: (state, action) => {
       state.form.questions.push(action.payload);
       // Вызывает событие обновления и обновляет все ответы в созданном вопросе
@@ -166,13 +189,18 @@ export const createFormSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchFormCreate.fulfilled, (state, action) => {
-      // state.submission = false;
-      state._id = action.payload;
+      state._id = action.payload._id;
+      state.editId = action.payload.editId;
+    });
+    builder.addCase(fetchFormEdit.fulfilled, (state, action) => {
+      state._id = state.form._id;
+      state.editId = state.form.editId;
     });
   },
 });
 
 export const {
+  editForm,
   createQuestion,
   copyQuestion,
   deleteQuestion,

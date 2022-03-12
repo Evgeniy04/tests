@@ -6,20 +6,12 @@ const handler = nextConnect({ attachParams: true });
 
 handler.use(middleware);
 
-handler.get("api/forms/fill/:_id", async (req, res) => {
-  const { _id } = req.params;
+handler.get("api/forms/edit/:editId", async (req, res) => {
+  const { editId } = req.params;
   const filter = {
-    ["_id"]: new ObjectId(_id),
+    ["editId"]: new ObjectId(editId),
   };
   let form = await req.db.collection("Forms").findOne(filter);
-  form.questions = form.questions.map((question) => {
-    if (question.type === "textmath") {
-      question.allAnswersMML = [];
-    }
-    delete question.editId;
-    delete question.correctAnswer;
-    return question;
-  });
   res.status(200).json(JSON.stringify(form));
 });
 

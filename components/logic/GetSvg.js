@@ -8,7 +8,7 @@ export const GetSvg = async (mml) => {
       "Content-Type": "application/json;charset=utf-8",
     },
     body: JSON.stringify({
-      titleMML: mml,
+      mml,
     }),
   });
   let { svg } = await response.json();

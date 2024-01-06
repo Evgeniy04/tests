@@ -4,7 +4,7 @@ import { Results } from "./questions/Results/Results";
 
 import { Checkbox as CheckboxFill } from "./questions/Fill/Checkbox";
 import { Radio as RadioFill } from "./questions/Fill/Radio";
-import { Select as SelectFill } from "./questions/Fill/select";
+import { Select as SelectFill } from "./questions/Fill/Select";
 import { TextMath as TextMathFill } from "./questions/Fill/TextMath";
 
 export default function Question({
